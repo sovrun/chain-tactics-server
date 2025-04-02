@@ -1,0 +1,16 @@
+out/
+cache/
+node_modules/
+bindings/
+artifacts/
+broadcast/
+.mud/
+
+# Ignore MUD deploy artifacts
+deploys/**/*.json
+indexer.db
+
+.DS_STORE
+
+# Nethereum
+nethereum-gen.multisettings

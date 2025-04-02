@@ -1,0 +1,15 @@
+setPlayerReadyAndStart.t.sol
+├── given match is not on preparing state
+│   └── it should revert {MatchNotPreparing}
+├── given match is on preparing state
+│   └── when player join on match that its not part
+│       └── it should revert {PlayerNotInMatch}
+├── given player is already on {Ready} state
+│   └── it should revert {PlayerAlreadyReady}
+└── given player is not on {Ready} state
+    └── when player call setPlayerReadyAndStart
+    │   └── it should set the {MatchPlayerStatus} to {Ready}
+    └── when all players set {MatchPlayerStatus} to {Ready}
+        └── it should set match player entities gold balance
+        └── it should set the {MatchStatus} to {Active}
+        └── it should set the {MatchPreparationTime}

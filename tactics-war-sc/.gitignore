@@ -1,0 +1,22 @@
+# ignore generated files
+node_modules
+packages/*/node_modules
+packages/*/dist
+packages/.DS_STORE
+
+# contracts ignore files
+packages/contracts/src/codegen
+packages/contracts/.env
+packages/contracts/abi/*
+packages/contracts/indexer.db
+packages/contracts/codeGenTactics2
+packages/contracts/codeGenTactics3
+
+# ignore client files
+packages/client/Assets
+
+# ignore unity files
+/unity/Assets
+
+# Ignore vscode files
+.vscode/settings.json

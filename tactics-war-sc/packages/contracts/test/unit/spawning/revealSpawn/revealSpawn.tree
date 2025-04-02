@@ -1,0 +1,22 @@
+revealSpawn.t.sol
+├── given match is not active
+│   └── it should revert {MatchNotActive}
+├── given match preparation time is over
+│   └── it should revert {PreparationTimeOver}
+├── given spawn status is not {SpawnStatus.RevealSpawning}
+│   └── it should revert {IncorrectRevealStatus}
+├── given player submitted the incorrect coordinates/piece types/secret
+│   └── it should revert {InvalidReveal}
+├── given pieces are valid
+    └── when spawn position is not a valid coordinate
+    │   └── it should revert {CoordinateNotAllowed}
+    └── when spawn position is not a valid spawn area for player
+    │   └── it should revert {NotInSpawnArea}
+    └── when spawn position is occupied by another piece already
+        └── it should revert {PositionOccupied}
+        └── given spawn positions are valid
+            └── it should spawn the pieces on the desired coordinates
+            └── it should updated {SpawnStatus} from {SpawnStatusTypes.RevealSpawning} to {SpawnStatusTypes.LockRevealSpawning}
+            └── when two players revealed
+                └── it should update {SpawnStatus} from {SpawnStatusTypes.LockRevealSpawning} to {SpawnStatusTypes.Ready}
+                └── it should flip the {MatchPlayers} to determine who will be getting the first turn

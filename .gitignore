@@ -1,0 +1,15 @@
+# docs
+docs
+
+# build directories
+[Bb]uild
+
+# clang
+.cache
+
+# Mac
+.DS_Store
+
+# vs/vscode
+.vs
+.vscode

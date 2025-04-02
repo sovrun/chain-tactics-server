@@ -1,0 +1,41 @@
+leave.t.sol
+├── given player is not in queue or match
+│   └── it should revert {NotInQueueOrMatch}
+├── given player is in queue
+│   └── when player leaves queue
+│   │   └── it should remove the player from the queue
+│   │   └── it should update the {PlayerStatus} to {None}
+│   └── when player has already left the queue
+│       └── it should revert {NotInQueueOrMatch}
+└── given player is in a match
+        └── given match is in progress
+        │   └── when player leaves
+        │   │   └── it should cancel the match
+        │   │   └── it should reset players status
+        │   └── when player has already left
+        │       └── it should revert {NotInQueueOrMatch}
+        └── given match is active
+            └── when player surrenders
+            │   └── it should update the caller {MatchPlayerSurrenders} to {true}
+            │   └── it should set the opponent as the winner
+            │   └── it should reset the players {PlayerStatus}
+            └── when player has already surrendered
+            │   └── it should revert {NotInQueueOrMatch}
+            └── when player is in preparation phase
+                    └── when player leaves
+                    │   └── it should set MatchStatus to {Finished}
+                    │   └── it should update the caller {MatchPlayerSurrenders} to {true}
+                    │   └── it should make the opponent win
+                    │   └── it should reset the players {PlayerStatus}
+                    └── when opponent didn't make commitment
+                    │   └── it should set caller as the winner
+                    │   └── it should reset the players {PlayerStatus}
+                    │   └── it should set MatchStatus to {Finished}
+                    └── when both players didn't make a commitment
+                    │    └── it should reset the players {PlayerStatus}
+                    │    └── it should set MatchStatus to {Cancelled}
+                    │    └── it should not have any winners {MatchWinner} should be {0}
+                    └── when player leaves within {clientTriggerDelay} time
+                        └── it should reset the players {PlayerStatus} 
+                        └── it should set MatchStatus to {Cancelled}
+                        └── it should not have any winners {MatchWinner} should be {0} 

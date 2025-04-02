@@ -1,0 +1,27 @@
+attack.t.sol
+├── given match is not active
+│   └── it should revert {MatchNotActive}
+├── given not the active player call the {attack}
+│   └── it should revert {NotYourTurn(address)}
+├── given player exceeds the attacks allowed per turn 
+│   └── it should revert {InvalidAction}
+├── given player trying to attack with an opponent piece
+│   └── it should revert {PieceNotOwned}
+└── given piece is trying to do an invalid attack
+    └── it should revert {InvalidAttack}
+    └── when attacking a piece
+        └── it should create a log of { LastAttackCommited } record of attacker and target pieces
+        └── given the attacker piece damage is lesser than the target piece health
+            └── it should reduces the { health } of the target
+        └── given the attacker piece damage is greater than the target piece health
+            └── it should reduces the { health } of the target to zero
+            └── it should delete the { Position } and { EntityAtPosition } records of the target
+        └── given the target piece is { Fortress } and it got destroyed
+            └── it should reduces the { health } of the target to zero
+            └── it should delete the { Position } and { EntityAtPosition } records of the target
+            └── it should make the attacker player as the winner and the match has been ended
+        └── given alice skips a turn
+                │   └── it should be eve's current turn to attack
+                └── given both skips two turns
+                    └── it should be alice's current turn to attack
+        

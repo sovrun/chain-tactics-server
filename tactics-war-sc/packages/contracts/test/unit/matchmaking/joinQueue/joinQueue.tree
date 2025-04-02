@@ -1,0 +1,31 @@
+joinQueue.t.sol
+├── given player is already in the queue
+│   └── it should revert {PlayerAlreadyInQueue}
+├── given player has on going match
+│   └── it should revert {PlayerHasOngoingMatch}
+├── given player can join queue  
+│   └── it should set the {PlayerStatus.status} to {Queueing}
+│   └── it should set the {PlayerQueue}
+│   └── it should add player address bytes32 representation to {MatchPool}
+└── given match found
+    └── when two players join queue
+    │   └── it should create the {MatchConfig}
+    │   └── it should create match player entities and set {MatchPlayerStatus} to {Matched}
+    │   └── it should set player entities into {PlayersInMatch} table
+    │   └── it should set player entities {PlayerStatus.status} to {Playing}
+    │   └── it should set player entities {PlayerQueue} to (bytes(0))
+    │   └── it should remove players to {MatchPool}
+    │   └── it should set the {MatchStatus} to {Preparing}
+    └── when 3rd player join queue
+        └── it should remove player1 and player2 on {MatchPool}
+        └── it should set player1 and player2 {PlayerQueue} to (bytes(0))
+        └── it should add player3 on {MatchPool}
+        └── it should set player3 {PlayerStatus.status} to {Queueing}
+        └── it should set player3 {PlayerQueue}
+    └── when 4 players join at the same time
+        └── it should remove player1 and player2 on {MatchPool}
+        └── it should set player1 and player2 {PlayerQueue} to (bytes(0))
+        └── it should create the match entity and {MatchConfig} should have correct details
+        └── it should remove player3 and player4 on {MatchPool}
+        └── it should set player3 and player4 {PlayerQueue} to (bytes(0))
+        └── it should create the match entity different from the previous one and {MatchConfig} should have correct details

@@ -1,0 +1,20 @@
+claimVictory.t.sol
+├── given match is not active
+│   └── it should revert {MatchNotActive}
+└── given match is active
+    └── given player is not part of the match
+    │   └── it should revert {PlayerNotInMatch}
+    └── given player is part of the match
+        └── given player's {SpawnStatus} is {none}
+        │   └── it should revert {PlayerSpawnStatusNone}
+        └── given opponent is still active
+        │   └── when preparation phase is still ongoing
+        │   │   └── it should revert {OpponentActive}
+        │   └── when preparation phase is over
+        │       └── it should revert {OpponentActive}
+        └── given opponent is inactive after preparation phase
+            └── it should set the opponent's {MatchPlayerSurrenders} status to {true}
+            └── it should set the caller as the winner in {MatchWinner}
+            └── it should set the {MatchStatus} as {Finished}
+            └── it should reset the player's {PlayerStatus}
+

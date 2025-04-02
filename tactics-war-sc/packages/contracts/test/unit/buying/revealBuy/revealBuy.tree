@@ -1,0 +1,22 @@
+revealBuy.t.sol
+├── given match is not active
+│   └── it should revert {MatchNotActive}
+├── given match preparation time is over
+│   └── it should revert {PreparationTimeOver}
+├── given spawn status is not {SpawnStatus.RevealBuying}
+│   └── it should revert {IncorrectRevealStatus}
+├── given player submitted the incorrect piece types/secret
+│   └── it should revert {InvalidReveal}
+├── given player submitted the correct piece types and secret
+    └── when one of the pieces is a fortress
+    │   └── it should revert {PieceNotAllowedToBuy}
+    └── when the player does not have enough gold balance
+        └── it should revert {NotEnoughGold}
+        └── when reveal is correct
+        └── it should create the piece entities
+        └── it should consume the gold balance of player depending on the piece's cost.
+        └── it should changes the {SpawnStatus} from {SpawnStatus.RevealBuying} to {SpawnStatus.LockRevealBuying}
+        └── when two players revealed
+            └── it should updated {SpawnStatus} from {SpawnStatusTypes.LockRevealBuying} to {SpawnStatusTypes.CommitSpawning}
+            └── it should distribute the fortress for each player
+            └── it should removed the {Commit} records for both players

@@ -1,0 +1,7 @@
+setPlayerName.t.sol
+├── given player has an empty string
+|   └── it should revert with {EmptyPlayerName}
+├── given player has a valid name
+|   └── it should update the player's in game name
+├── given players have duplicate name
+    └── it should update the player's in game name. Players can have duplicate name

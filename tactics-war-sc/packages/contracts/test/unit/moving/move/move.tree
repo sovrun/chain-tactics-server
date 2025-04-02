@@ -1,0 +1,34 @@
+move.t.sol
+├── given match is not active
+│   └── it should revert {MatchNotActive}
+├── given not the active player call the {move}
+│   └── it should revert {NotYourTurn(address)}
+├── given player exceeds the moves allowed per turn 
+│   └── it should revert {ExceededMovesAllowed}
+├── given player attacks and moves different pieces 
+│   └── it should revert {NotSelectedPiece}
+└── given player trying to move an opponent piece
+    └── it should revert {PieceNotOwned}
+    └── when moving a piece
+        └── given a piece has been destroyed already
+            └── it should revert {PieceNotExists}
+            └── when calculating the distance and path validity
+                ├── given the path is a direct diagonal
+                │   └── it should revert {InvalidPath}
+                ├── given the distance is greater than piece movement or distance is zero
+                │   └── it should revert {InvalidMove}
+                ├── given the path is not being block by any pieces
+                │   └── it should revert {PositionOccupied}
+                ├── given piece successfully move to the target destination
+                │   └── it should have the previous position empty
+                │   └── it should create the { Position } and { EntityAtPosition } records of that piece
+                │   └── it should increment the count of player's move
+                │   ├── given the piece has no last action before
+                │   │   └── it should set as an active piece
+                ├── given piece movement recorded as last move commited
+                │   │   └── it should recorded as last move commited on a match
+                ├── given alice skips a turn
+                │   └── it should be eve's current turn to move
+                └── given both skips two turns
+                    └── it should be alice's current turn to move
+                    

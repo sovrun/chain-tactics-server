@@ -1,0 +1,14 @@
+commitSpawn.t.sol
+├── given match is not active
+│   └── it should revert {MatchNotActive}
+├── given match preparation time is over
+│   └── it should revert {PreparationTimeOver}
+├── given encoded hash is empty
+│   └── it should revert {NoCommitHash}
+├── given spawn status is not {SpawnStatus.CommitSpawning}
+│   └── it should revert {IncorrectCommitStatus}
+├── given player submitted the encoded hash
+│   └── it should create the {Commit} record
+│   └── when two players commits
+        └── it should update the {SpawnStatus} from {SpawnStatus.CommitSpawning} to {SpawnStatus.LockCommitSpawning} 
+        
